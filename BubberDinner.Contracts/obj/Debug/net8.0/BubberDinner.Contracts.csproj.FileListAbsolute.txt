@@ -1,0 +1,11 @@
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\bin\Debug\net8.0\BubberDinner.Contracts.deps.json
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\bin\Debug\net8.0\BubberDinner.Contracts.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\bin\Debug\net8.0\BubberDinner.Contracts.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.AssemblyInfoInputs.cache
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.AssemblyInfo.cs
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.csproj.CoreCompileInputs.cache
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\refint\BubberDinner.Contracts.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\BubberDinner.Contracts.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Contracts\obj\Debug\net8.0\ref\BubberDinner.Contracts.dll

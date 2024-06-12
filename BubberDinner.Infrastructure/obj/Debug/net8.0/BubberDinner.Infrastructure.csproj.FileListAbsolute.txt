@@ -1,0 +1,17 @@
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Infrastructure.deps.json
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Infrastructure.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Infrastructure.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.AssemblyInfoInputs.cache
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.AssemblyInfo.cs
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\refint\BubberDinner.Infrastructure.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\ref\BubberDinner.Infrastructure.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Application.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Domain.dll
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Application.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\bin\Debug\net8.0\BubberDinner.Domain.pdb
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDinner.Infrastructure.csproj.AssemblyReference.cache
+E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.Infrastructure\obj\Debug\net8.0\BubberDi.89008AC4.Up2Date

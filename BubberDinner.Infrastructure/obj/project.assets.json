@@ -1,0 +1,112 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "BubberDinner.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BubberDinner.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BubberDinner.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BubberDinner.Application.dll": {}
+        }
+      },
+      "BubberDinner.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BubberDinner.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BubberDinner.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BubberDinner.Application/1.0.0": {
+      "type": "project",
+      "path": "../BubberDinner.Application/BubberDinner.Application.csproj",
+      "msbuildProject": "../BubberDinner.Application/BubberDinner.Application.csproj"
+    },
+    "BubberDinner.Domain/1.0.0": {
+      "type": "project",
+      "path": "../BubberDinner.Domain/BubberDinner.Domain.csproj",
+      "msbuildProject": "../BubberDinner.Domain/BubberDinner.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "BubberDinner.Application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\hugol\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Dev\\Curso-Dotnet\\BubberDinner\\BubberDinner.Infrastructure\\BubberDinner.Infrastructure.csproj",
+      "projectName": "BubberDinner.Infrastructure",
+      "projectPath": "E:\\Dev\\Curso-Dotnet\\BubberDinner\\BubberDinner.Infrastructure\\BubberDinner.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\hugol\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev\\Curso-Dotnet\\BubberDinner\\BubberDinner.Infrastructure\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\hugol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "E:\\Dev\\Curso-Dotnet\\BubberDinner\\BubberDinner.Application\\BubberDinner.Application.csproj": {
+              "projectPath": "E:\\Dev\\Curso-Dotnet\\BubberDinner\\BubberDinner.Application\\BubberDinner.Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
