@@ -1,5 +1,5 @@
+using BubberDinner.Application.Services.Authentication;
 using BubberDinner.Contracts.Authentication;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
@@ -7,16 +7,37 @@ namespace BubberDinner.Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController(IAuthenticationService authenticationService) : ControllerBase
 {
+    private readonly IAuthenticationService _authenticationService = authenticationService;
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        return Ok(request);
+        var authResult = _authenticationService.Register(
+            request.FirstName,
+            request.LastName,
+            request.Email,
+            request.Password);
+        var response = new AuthenticationResponse(
+            authResult.Id,
+            authResult.FirstName,
+            authResult.LastName,
+            authResult.Email,
+            authResult.Token);
+        return Ok(response);
     }
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        return Ok(request);
+        var authResult = _authenticationService.Login(
+            request.Email,
+            request.Password);
+        var response = new AuthenticationResponse(
+            authResult.Id,
+            authResult.FirstName,
+            authResult.LastName,
+            authResult.Email,
+            authResult.Token);
+        return Ok(response);
     }
 }
