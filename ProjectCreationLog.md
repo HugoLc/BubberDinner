@@ -29,11 +29,11 @@ O modelo "Biblioteca de Classes" foi criado com êxito.
 $ dotnet build
 Compilação com êxito.
 C:\Program Files\dotnet\sdk\8.0.204\NuGet.targets(169,5): warning : Não é possível encontrar um projeto para restaurar! [E:\Dev\Curso-Dotnet\BubberDinner\BubberDinner.sln]
-    1 Aviso(s)
-    0 Erro(s)
+1 Aviso(s)
+0 Erro(s)
 
 /Dev/Curso-Dotnet/BubberDinner
-$ dotnet sln add **/*.csproj
+$ dotnet sln add \*_/_.csproj
 O projeto ‘BubberDinner.Api\BubberDinner.Api.csproj’ foi adicionado à solução.
 O projeto ‘BubberDinner.Application\BubberDinner.Application.csproj’ foi adicionado à solução.
 O projeto ‘BubberDinner.Contracts\BubberDinner.Contracts.csproj’ foi adicionado à solução.
@@ -43,8 +43,8 @@ O projeto ‘BubberDinner.Infrastructure\BubberDinner.Infrastructure.csproj’ f
 /Dev/Curso-Dotnet/BubberDinner
 $ dotnet build
 Compilação com êxito.
-    0 Aviso(s)
-    0 Erro(s)
+0 Aviso(s)
+0 Erro(s)
 
 /Dev/Curso-Dotnet/BubberDinner
 $ dotnet add ./BubberDinner.Api reference ./BubberDinner.Contracts/ ./BubberDinner.Application/
@@ -56,4 +56,18 @@ $ dotnet add ./BubberDinner.Infrastructure/ reference ./BubberDinner.Application
 A referência ‘..\BubberDinner.Application\BubberDinner.Application.csproj’ foi adicionada ao projeto.
 
 /Dev/Curso-Dotnet/BubberDinner
-$ dotnet add ./BubberDinner.Application/ reference ./BubberDinner.Domain/       A referência ‘..\BubberDinner.Domain\BubberDinner.Domain.csproj’ foi adicionada ao projeto.
+$ dotnet add ./BubberDinner.Application/ reference ./BubberDinner.Domain/ A referência ‘..\BubberDinner.Domain\BubberDinner.Domain.csproj’ foi adicionada ao projeto.
+
+% user-secrets
+
+Dev/Curso-Dotnet/BubberDinner
+$ dotnet user-secrets set --project ./BubberDinner.Api/ "JwtSettings:Secret" "super-secret-key-from-user-secrets"
+Successfully saved JwtSettings:Secret = super-secret-key-from-user-secrets to the secret store.
+
+Dev/Curso-Dotnet/BubberDinner
+$ dotnet user-secrets list --project ./BubberDinner.Api/
+JwtSettings:Secret = super-secret-key-from-user-secrets
+JetSettings:Secret = super-secret-key-from-user-secrets
+
+/Dev/Curso-Dotnet/BubberDinner
+$ dotnet user-secrets remove --project ./BubberDinner.Api/ "JetSettings:Secret"
