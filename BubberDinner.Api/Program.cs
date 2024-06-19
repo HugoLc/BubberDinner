@@ -1,3 +1,4 @@
+using BubberDinner.Api.Middleware;
 using BubberDinner.Application;
 using BubberDinner.Infrastructure;
 
@@ -8,6 +9,8 @@ builder.Services
 builder.Services.AddControllers();
 
 var app = builder.Build();
+//Error handling first aproach
+//app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
