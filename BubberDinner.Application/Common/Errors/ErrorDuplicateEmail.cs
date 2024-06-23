@@ -1,10 +1,13 @@
 using System.Net;
+using FluentResults;
 
 namespace BubberDinner.Application.Common.Errors;
 
-public record class ErrorDuplicateEmail : IError
+public class ErrorDuplicateEmail : IError
 {
-    public HttpStatusCode StatusCode => HttpStatusCode.Conflict;
+    public List<IError> Reasons => throw new NotImplementedException();
 
-    public string ErrorMessage => "Email duplo";
+    public string Message => throw new NotImplementedException();
+
+    public Dictionary<string, object> Metadata => throw new NotImplementedException();
 }
