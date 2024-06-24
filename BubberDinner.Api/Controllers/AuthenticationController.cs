@@ -14,23 +14,16 @@ public class AuthenticationController(IAuthenticationService authenticationServi
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        FluentResults.Result<AuthenticationResult> registerResult = _authenticationService.Register(
+        ErrorOr.ErrorOr<AuthenticationResult> registerResult = _authenticationService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
             request.Password
         );
-        if (registerResult.IsSuccess)
-        {
-            return Ok(MapAuthResult(registerResult.Value));
-        }
-
-        var firstError = registerResult.Errors[0];
-        if (firstError is ErrorDuplicateEmail)
-        {
-            return Problem(statusCode: StatusCodes.Status409Conflict, detail: "duplicado");
-        }
-        return Problem();
+        return registerResult.MatchFirst(
+            response => Ok(MapAuthResult(response)),
+            firstErr => Problem(statusCode: StatusCodes.Status409Conflict, detail: firstErr.Description)
+        );
     }
 
     private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)

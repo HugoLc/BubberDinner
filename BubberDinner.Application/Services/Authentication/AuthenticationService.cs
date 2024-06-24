@@ -1,7 +1,9 @@
 using BubberDinner.Application.Common.Errors;
 using BubberDinner.Application.Common.Interfaces.Authentication;
 using BubberDinner.Application.Common.Interfaces.Persistence;
+using BubberDinner.Domain.Common.Errors;
 using BubberDinner.Domain.Entities;
+using ErrorOr;
 using FluentResults;
 
 namespace BubberDinner.Application.Services.Authentication;
@@ -17,11 +19,11 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         if (_userRepository.GetByEmail(email) is not null)
         {
-            return Result.Fail<AuthenticationResult>(new ErrorDuplicateEmail());
+            return Errors.User.DuplicateEmail;
         }
         var user = new User()
         {
