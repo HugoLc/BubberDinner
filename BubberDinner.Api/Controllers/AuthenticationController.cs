@@ -1,7 +1,9 @@
-using BubberDinner.Application.Services.Authentication.Commands;
-using BubberDinner.Application.Services.Authentication.Common;
-using BubberDinner.Application.Services.Authentication.Queries;
+using BubberDinner.Application.Authentication.Commands.Register;
+using BubberDinner.Application.Authentication.Common;
+using BubberDinner.Application.Authentication.Queries.Login;
 using BubberDinner.Contracts.Authentication;
+using ErrorOr;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
@@ -10,27 +12,44 @@ namespace BubberDinner.Api.Controllers;
 [ApiController]
 [Route("auth")]
 public class AuthenticationController(
-    IAuthenticationCommandService authenticationCommandService,
-    IAuthenticationQueryService authenticationQueryService) : ControllerBase
+    ISender mediator) : ControllerBase
 {
-    private readonly IAuthenticationCommandService _authenticationCommandService = authenticationCommandService;
-    private readonly IAuthenticationQueryService _authenticationQueryService = authenticationQueryService;
+    // private readonly IMediator _mediator = mediator;
+    private readonly ISender _mediator = mediator;
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        ErrorOr.ErrorOr<AuthenticationResult> registerResult = _authenticationCommandService.Register(
-            request.FirstName,
-            request.LastName,
-            request.Email,
-            request.Password
-        );
+        var command = new RegisterCommand(request.FirstName, request.LastName, request.Email, request.Password);
+        ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);
         return registerResult.MatchFirst(
             response => Ok(MapAuthResult(response)),
             firstErr => Problem(statusCode: StatusCodes.Status409Conflict, detail: firstErr.Description)
         );
     }
 
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var query = new LoginQuery(request.Email, request.Password);
+        var authResult = await _mediator.Send(query);
+        if (authResult.IsError)
+        {
+            return Problem();
+        }
+        // var response = new AuthenticationResponse(
+        //     authResult.User.Id,
+        //     authResult.User.FirstName,
+        //     authResult.User.LastName,
+        //     authResult.User.Email,
+        //     authResult.Token);
+        // return Ok(response);
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem()
+        );
+    }
     private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
     {
         return new AuthenticationResponse(
@@ -39,20 +58,5 @@ public class AuthenticationController(
                         authResult.User.LastName,
                         authResult.User.Email,
                         authResult.Token);
-    }
-
-    [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
-    {
-        var authResult = _authenticationQueryService.Login(
-            request.Email,
-            request.Password);
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.Token);
-        return Ok(response);
     }
 }
