@@ -1,5 +1,6 @@
-using BubberDinner.Application.Common.Errors;
-using BubberDinner.Application.Services.Authentication;
+using BubberDinner.Application.Services.Authentication.Commands;
+using BubberDinner.Application.Services.Authentication.Common;
+using BubberDinner.Application.Services.Authentication.Queries;
 using BubberDinner.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
@@ -8,13 +9,17 @@ namespace BubberDinner.Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController(IAuthenticationService authenticationService) : ControllerBase
+public class AuthenticationController(
+    IAuthenticationCommandService authenticationCommandService,
+    IAuthenticationQueryService authenticationQueryService) : ControllerBase
 {
-    private readonly IAuthenticationService _authenticationService = authenticationService;
+    private readonly IAuthenticationCommandService _authenticationCommandService = authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService = authenticationQueryService;
+
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        ErrorOr.ErrorOr<AuthenticationResult> registerResult = _authenticationService.Register(
+        ErrorOr.ErrorOr<AuthenticationResult> registerResult = _authenticationCommandService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
@@ -39,7 +44,7 @@ public class AuthenticationController(IAuthenticationService authenticationServi
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        var authResult = _authenticationService.Login(
+        var authResult = _authenticationQueryService.Login(
             request.Email,
             request.Password);
         var response = new AuthenticationResponse(

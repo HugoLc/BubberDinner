@@ -1,19 +1,20 @@
 using BubberDinner.Application.Common.Errors;
 using BubberDinner.Application.Common.Interfaces.Authentication;
 using BubberDinner.Application.Common.Interfaces.Persistence;
+using BubberDinner.Application.Services.Authentication.Common;
 using BubberDinner.Domain.Common.Errors;
 using BubberDinner.Domain.Entities;
 using ErrorOr;
 using FluentResults;
 
-namespace BubberDinner.Application.Services.Authentication;
+namespace BubberDinner.Application.Services.Authentication.Commands;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationCommandService : IAuthenticationCommandService
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public AuthenticationService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+    public AuthenticationCommandService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
@@ -39,19 +40,5 @@ public class AuthenticationService : IAuthenticationService
             token);
     }
 
-    public AuthenticationResult Login(string email, string password)
-    {
-        if (_userRepository.GetByEmail(email) is not User user)
-        {
-            throw new Exception("Invalid user or password");
-        }
-        if (user.Password != password)
-        {
-            throw new Exception("Invalid user or password");
-        }
-        var token = _jwtTokenGenerator.GenerateToken(user);
-        return new AuthenticationResult(
-            user,
-            token);
-    }
+
 }
